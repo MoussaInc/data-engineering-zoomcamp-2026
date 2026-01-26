@@ -99,10 +99,18 @@ wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_z
 For the trips in November 2025 (lpep_pickup_datetime between '2025-11-01' and '2025-12-01', exclusive of the upper bound), how many trips had a `trip_distance` of less than or equal to 1 mile?
 
 - 7,853
-- 8,007
+- [x] 8,007
 - 8,254
 - 8,421
 
+*SQL query :**
+```sql
+SELECT COUNT(*) AS trips_leq_1_mile
+FROM green_tripdata_2025_11
+WHERE lpep_pickup_datetime >= '2025-11-01'
+  AND lpep_pickup_datetime < '2025-12-01'
+  AND trip_distance <= 1;
+```
 
 ## Question 4. Longest trip for each day
 
@@ -110,21 +118,45 @@ Which was the pick up day with the longest trip distance? Only consider trips wi
 
 Use the pick up time for your calculations.
 
-- 2025-11-14
+- [x] 2025-11-14
 - 2025-11-20
 - 2025-11-23
 - 2025-11-25
 
+*SQL query :**
+```sql
+SELECT
+    DATE(lpep_pickup_datetime) AS pickup_day,
+    MAX(trip_distance) AS max_trip_distance
+FROM green_tripdata_2025_11
+WHERE trip_distance < 100
+GROUP BY pickup_day
+ORDER BY max_trip_distance DESC
+LIMIT 5;
+```
 
 ## Question 5. Biggest pickup zone
 
 Which was the pickup zone with the largest `total_amount` (sum of all trips) on November 18th, 2025?
 
-- East Harlem North
+- [x] East Harlem North
 - East Harlem South
 - Morningside Heights
 - Forest Hills
 
+*SQL query :**
+```sql
+SELECT
+    t."Zone" AS pickup_zone_name,
+    SUM(g.total_amount) AS total_amount_sum
+FROM green_tripdata_2025_11 AS g
+JOIN taxi_zone_lookup AS t
+  ON g."PULocationID" = t."LocationID"
+WHERE DATE(g.lpep_pickup_datetime) = '2025-11-18'
+GROUP BY t."Zone"
+ORDER BY total_amount_sum DESC
+LIMIT 5;
+```
 
 ## Question 6. Largest tip
 
@@ -133,10 +165,27 @@ For the passengers picked up in the zone named "East Harlem North" in November 2
 Note: it's `tip` , not `trip`. We need the name of the zone, not the ID.
 
 - JFK Airport
-- Yorkville West
+- [x] Yorkville West
 - East Harlem North
 - LaGuardia Airport
 
+*SQL query :**
+```sql
+SELECT
+    t_drop."Zone" AS dropoff_zone_name,
+    MAX(g.tip_amount) AS max_tip
+FROM green_tripdata_2025_11 AS g
+JOIN taxi_zone_lookup AS t_pick
+  ON g."PULocationID" = t_pick."LocationID"
+JOIN taxi_zone_lookup AS t_drop
+  ON g."DOLocationID" = t_drop."LocationID"
+WHERE t_pick."Zone" = 'East Harlem North'
+  AND g.lpep_pickup_datetime >= '2025-11-01'
+  AND g.lpep_pickup_datetime < '2025-12-01'
+GROUP BY t_drop."Zone"
+ORDER BY max_tip DESC
+LIMIT 5;
+```
 
 ## Terraform
 
@@ -160,7 +209,7 @@ Answers:
 - terraform import, terraform apply -y, terraform destroy
 - teraform init, terraform plan -auto-apply, terraform rm
 - terraform init, terraform run -auto-approve, terraform destroy
-- terraform init, terraform apply -auto-approve, terraform destroy
+- [x] terraform init, terraform apply -auto-approve, terraform destroy
 - terraform import, terraform apply -y, terraform rm
 
 
