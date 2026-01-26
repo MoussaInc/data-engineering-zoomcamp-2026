@@ -20,10 +20,15 @@ Run docker with the `python:3.13` image. Use an entrypoint `bash` to interact wi
 
 What's the version of `pip` in the image?
 
-- 25.3
+- [x] 25.3
 - 24.3.1
 - 24.2.1
 - 23.3.1
+
+```bash
+docker run -it python:3.13 pip --version
+```
+*Output : * `pip 25.3 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)`
 
 
 ## Question 2. Understanding Docker networking and docker-compose
@@ -66,7 +71,7 @@ volumes:
 - localhost:5432
 - db:5433
 - postgres:5432
-- db:5432
+[x] db:5432
 
 If multiple answers are correct, select any 
 
