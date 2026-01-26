@@ -71,9 +71,13 @@ volumes:
 - localhost:5432
 - db:5433
 - postgres:5432
-[x] db:5432
+- [x] db:5432
 
 If multiple answers are correct, select any 
+
+**Explanation :**  
+In the docker-compose.yaml file, the Postgres service is identified by its service name `db` and uses the internal port 5432.
+To connect to the Postgres database, **pgadmin** should use: `db:5432` as the host and port.
 
 
 ## Prepare the Data
