@@ -4,7 +4,7 @@ namespace: zoomcamp
 inputs:
   - id: name
     type: STRING
-    defaults: Will
+    defaults: Papis
 
 concurrency:
   behavior: FAIL
@@ -44,5 +44,5 @@ triggers:
     type: io.kestra.plugin.core.trigger.Schedule
     cron: "0 10 * * *"
     inputs:
-      name: Sarah
+      name: PnB.MB
     disabled: true

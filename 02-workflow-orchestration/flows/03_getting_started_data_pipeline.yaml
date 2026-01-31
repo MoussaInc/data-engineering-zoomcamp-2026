@@ -8,6 +8,8 @@ inputs:
     defaults:
       - brand
       - price
+      - category
+      - stock
 
 tasks:
   - id: extract
@@ -48,8 +50,8 @@ tasks:
     sql: |
       INSTALL json;
       LOAD json;
-      SELECT brand, round(avg(price), 2) as avg_price
+      SELECT brand, category, stock, round(avg(price), 2) as avg_price
       FROM read_json_auto('{{workingDir}}/products.json')
-      GROUP BY brand
+      GROUP BY brand, category, stock
       ORDER BY avg_price DESC;
     fetchType: STORE

@@ -3,12 +3,19 @@ namespace: zoomcamp
 description: |
   The CSV Data used in the course: https://github.com/DataTalksClub/nyc-tlc-data/releases
 
+pluginDefaults:
+  - type: io.kestra.plugin.jdbc.postgresql
+    values:
+      url: jdbc:postgresql://pgdatabase:5432/ny_taxi
+      username: root
+      password: root
+
 inputs:
   - id: taxi
     type: SELECT
     displayName: Select taxi type
     values: [yellow, green]
-    defaults: yellow
+    defaults: green
 
   - id: year
     type: SELECT
@@ -262,9 +269,4 @@ tasks:
     type: io.kestra.plugin.core.storage.PurgeCurrentExecutionFiles
     description: This will remove output files. If you'd like to explore Kestra outputs, disable it.
 
-pluginDefaults:
-  - type: io.kestra.plugin.jdbc.postgresql
-    values:
-      url: jdbc:postgresql://pgdatabase:5432/ny_taxi
-      username: root
-      password: root
+
