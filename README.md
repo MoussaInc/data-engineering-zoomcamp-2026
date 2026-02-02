@@ -1,4 +1,4 @@
-# 📊 DataTalks.Club – Data Engineering Zoomcamp 2026
+# 📊 Data Engineering Zoomcamp 2026
 
 Ce dépôt contient mes **devoirs, exercices et projets** réalisés dans le cadre du **Data Engineering Zoomcamp 2026**, une formation gratuite et intensive proposée par **DataTalks.Club**.
 
