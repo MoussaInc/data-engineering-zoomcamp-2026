@@ -25,7 +25,7 @@ inputs:
 
 variables:
   file: "{{inputs.taxi}}_tripdata_{{inputs.year}}-{{inputs.month}}.csv"
-  gcs_file: "gs://{{kv('GCP_BUCKET_NAME')}}/{{vars.file}}"
+  gcs_file: "gs://{{kv('GCP_BUCKET')}}/{{vars.file}}"
   table: "{{kv('GCP_DATASET')}}.{{inputs.taxi}}_tripdata_{{inputs.year}}_{{inputs.month}}"
   data: "{{outputs.extract.outputFiles[inputs.taxi ~ '_tripdata_' ~ inputs.year ~ '-' ~ inputs.month ~ '.csv']}}"
 
@@ -245,5 +245,5 @@ pluginDefaults:
       serviceAccount: "{{kv('GCP_CREDS')}}"
       projectId: "{{kv('GCP_PROJECT_ID')}}"
       location: "{{kv('GCP_LOCATION')}}"
-      bucket: "{{kv('GCP_BUCKET_NAME')}}"
+      bucket: "{{kv('GCP_BUCKET')}}"
 
