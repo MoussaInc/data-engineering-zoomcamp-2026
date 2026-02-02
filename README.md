@@ -22,17 +22,17 @@ Ce dépôt contient mes **devoirs, exercices et projets** réalisés dans le cad
 - **Module 2 – Workflow & Orchestrataion**  
   📂 Homework : [M02-workflow-orchestration](homework/M02-workflow-orchestration)
 
-  - **Module 3 – Data warehouse**  
-  📂 Homework : [M03-data-warehouse](homework/M03-data-warehouse)
+- **Module 3 – Data warehouse**  
+📂 Homework : [M03-data-warehouse](homework/M03-data-warehouse)
 
-  - **Module 4 – Analytics engineering**  
-  📂 Homework : [M04-analytics-engineering](homework/M04-analytics-engineering)
+- **Module 4 – Analytics engineering**  
+📂 Homework : [M04-analytics-engineering](homework/M04-analytics-engineering)
 
-  - **Module 5 – Batch**  
-  📂 Homework : [M05-batch](homework/M05-batch)
+- **Module 5 – Batch**  
+📂 Homework : [M05-batch](homework/M05-batch)
 
-  - **Module 1 – Streaming**  
-  📂 Homework : [M06-streaming](homework/M06-streaming)
+- **Module 6 – Streaming**  
+📂 Homework : [M06-streaming](homework/M06-streaming)
 
 
 ## 🚀 Projet Final
