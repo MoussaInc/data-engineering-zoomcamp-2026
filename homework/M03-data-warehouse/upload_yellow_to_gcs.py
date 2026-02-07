@@ -6,7 +6,7 @@ from google.cloud import storage, bigquery
 # CONFIGURATION GOOGLE GCP
 # ==========================
 BUCKET_NAME = "de-zoomcamp-2026-homework-03-bucket"
-DATASET = "de_zoomcamp_yellow-homework-03-dataset"
+DATASET = "de_zoomcamp_yellow_homework_03_dataset"
 PROJECT_ID = "de-zoomcamp-2026-486014"
 DESTINATION_FOLDER = "yellow"
 
@@ -51,18 +51,16 @@ def upload_file_to_gcs(client, bucket_name: str, filepath: str):
     print(f"Uploaded: gs://{bucket_name}/{blob_path}")
 
 
-def create_bq_dataset(bq_client, dataset_id: str):
-    """Créer le dataset BigQuery si il n'existe pas"""
-    dataset_ref = bigquery.Dataset(f"{PROJECT_ID}.{dataset_id}")
+def create_bq_dataset(bq_client, dataset_name: str, project_id: str):
+    dataset_ref = bigquery.DatasetReference(project_id, dataset_name)
+    dataset = bigquery.Dataset(dataset_ref)
 
     try:
         bq_client.get_dataset(dataset_ref)
-        print(f"Dataset '{dataset_id}' already exists.")
+        print(f"Dataset '{dataset_name}' already exists.")
     except Exception:
-        dataset = bigquery.Dataset(dataset_ref)
-        dataset.location = "EU"  # ou "US" selon ton choix
-        bq_client.create_dataset(dataset)
-        print(f"Dataset '{dataset_id}' created successfully.")
+        dataset = bq_client.create_dataset(dataset) 
+        print(f"Created dataset '{dataset_name}' in project '{project_id}'.")
 
 
 # ==========================
@@ -70,12 +68,13 @@ def create_bq_dataset(bq_client, dataset_id: str):
 # ==========================
 
 if __name__ == "__main__":
+
     # Clients GCP
     storage_client = storage.Client(project=PROJECT_ID)
     bq_client = bigquery.Client(project=PROJECT_ID)
 
     # Créer le dataset BigQuery
-    create_bq_dataset(bq_client, DATASET)
+    create_bq_dataset(bq_client, DATASET, PROJECT_ID)
 
     # Télécharger et uploader les fichiers Parquet
     for month in MONTHS:
