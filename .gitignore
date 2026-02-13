@@ -16,3 +16,8 @@ serving_dir
 !week_6_stream_processing/avro_example/data/rides.csv
 *.parquet
 *.csv
+
+# Data directory
+.*/data/
+data/
+homework/M04-analytics-engineering/ny_taxi_rides/data
