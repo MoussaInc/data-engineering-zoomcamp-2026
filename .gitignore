@@ -1,4 +1,14 @@
+*.duckdb
+*.db
 
+# dbt
+target/
+dbt_packages/
+logs/
+
+# python
+.venv/
+*.pyc
 .DS_Store
 .idea
 *.tfstate
@@ -22,3 +32,7 @@ serving_dir
 data/
 homework/M04-analytics-engineering/ny_taxi_rides/data
 homework/M03-data-warehouse/data
+
+taxi_rides_ny.duckdb
+ny_taxi_rides.duckdb
+homework/M04-analytics-engineering/ny_taxi_rides/ny_taxi_rides.duckdb

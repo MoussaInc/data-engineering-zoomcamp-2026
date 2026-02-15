@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw_data
+    description: "Raw data sources for NYC taxi rides"
+    database: ny_taxi_rides # put here Project ID (for dbt cloud setup)
+    schema: prod # Dataset name
+    tables: 
+      - name: yellow_tripdata # Check the right name in bigquery
+      - name: green_tripdata # Check the right name in bigquery
+      
+
+
