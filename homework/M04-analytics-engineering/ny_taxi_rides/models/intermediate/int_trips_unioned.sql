@@ -18,5 +18,5 @@ trips_unioned as (
     from yellow_tripdata
 )
 
-select distinct payment_type
+select *
 from trips_unioned
