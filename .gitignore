@@ -1,5 +1,7 @@
 *.duckdb
 *.db
+.env
+data/
 
 # dbt
 target/

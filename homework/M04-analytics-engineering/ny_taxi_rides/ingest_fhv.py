@@ -1,10 +1,13 @@
 import requests
 from pathlib import Path
 from google.cloud import bigquery
+from dotenv import load_dotenv
 
-PROJECT_ID = "de-zoomcamp-2026-486014"
-DATASET_ID = "de_zoomcamp_kestra_dataset"
-TABLE_ID   = "fhv_tripdata"
+load_dotenv()
+PROJECT_ID = os.getenv("PROJECT_ID")
+DATASET_ID = os.getenv("DATASET_ID")
+TABLE_ID   = os.getenv("TABLE_ID")
+
 BASE_URL   = "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhv"
 
 data_dir = Path("data/fhv")
