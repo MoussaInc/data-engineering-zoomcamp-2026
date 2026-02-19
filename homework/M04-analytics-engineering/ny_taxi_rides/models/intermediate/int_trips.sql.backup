@@ -1,9 +1,11 @@
 with unioned as (
     select * from {{ ref('int_trips_unioned') }}
 ),
+
 payment_types as (
     select * from {{ ref('payment_type') }}
 ),
+
 cleaned_and_enriched as (
     select
         {{ dbt_utils.generate_surrogate_key([
@@ -38,11 +40,14 @@ cleaned_and_enriched as (
         u.total_amount,
         coalesce(u.payment_type, 0) as payment_type,
         coalesce(pt.payment_type_description, 'Unknown') as payment_type_description
+
     from unioned u
     left join payment_types pt
         on coalesce(u.payment_type, 0) = pt.payment_type
 )
+
 select * from cleaned_and_enriched
+
 -- Deduplicate: if multiple trips match (same vendor, second, location, service), keep first
 qualify row_number() over(
     partition by vendor_id, pickup_datetime, pickup_location_id, service_type

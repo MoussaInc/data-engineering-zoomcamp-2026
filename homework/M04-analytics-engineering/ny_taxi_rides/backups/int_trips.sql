@@ -1,5 +1,10 @@
 with unioned as (
     select * from {{ ref('int_trips_unioned') }}
+    -- Filtrage par date pour économiser la mémoire
+    {% if var('start_date', none) is not none and var('end_date', none) is not none %}
+    where pickup_datetime >= '{{ var('start_date') }}'
+      and pickup_datetime < '{{ var('end_date') }}'
+    {% endif %}
 ),
 payment_types as (
     select * from {{ ref('payment_type') }}

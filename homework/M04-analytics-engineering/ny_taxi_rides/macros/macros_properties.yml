@@ -12,7 +12,7 @@ macros:
         type: timestamp
         description: The dropoff timestamp
 
-  - name: get_vendor_data
+  - name: get_vendor_names
     description: >
       Generates a CASE statement that maps vendor_id to vendor_name.
       This macro is cross-database compatible and generates SQL at compile time using a Jinja dictionary.

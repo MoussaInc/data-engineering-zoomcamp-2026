@@ -27,7 +27,7 @@ models/
 
 If you run `dbt run --select int_trips_unioned`, what models will be built?
 
-- `stg_green_tripdata`, `stg_yellow_tripdata`, and `int_trips_unioned` (upstream dependencies)
+- [x] `stg_green_tripdata`, `stg_yellow_tripdata`, and `int_trips_unioned` (upstream dependencies)
 - Any model with upstream and downstream dependencies to `int_trips_unioned`
 - `int_trips_unioned` only
 - `int_trips_unioned`, `int_trips`, and `fct_trips` (downstream dependencies)
@@ -52,7 +52,7 @@ Your model `fct_trips` has been running successfully for months. A new value `6`
 What happens when you run `dbt test --select fct_trips`?
 
 - dbt will skip the test because the model didn't change
-- dbt will fail the test, returning a non-zero exit code
+- [x] dbt will fail the test, returning a non-zero exit code
 - dbt will pass the test with a warning about the new value
 - dbt will update the configuration to include the new value
 
@@ -66,7 +66,7 @@ What is the count of records in the `fct_monthly_zone_revenue` model?
 
 - 12,998
 - 14,120
-- 12,184
+- [x] 12,184
 - 15,421
 
 ---
@@ -77,7 +77,7 @@ Using the `fct_monthly_zone_revenue` table, find the pickup zone with the **high
 
 Which zone had the highest revenue?
 
-- East Harlem North
+- [x] East Harlem North
 - Morningside Heights
 - East Harlem South
 - Washington Heights South
@@ -90,7 +90,7 @@ Using the `fct_monthly_zone_revenue` table, what is the **total number of trips*
 
 - 500,234
 - 350,891
-- 384,624
+- [x] 384,624
 - 421,509
 
 ---

@@ -7,7 +7,20 @@
   )
 }}
 
+-- Configure DuckDB memory settings at query execution time
+{% if execute %}
+  {% call statement('configure_memory', fetch_result=False) %}
+    SET memory_limit='3GB';
+    SET threads=1;
+    SET preserve_insertion_order=false;
+    SET enable_object_cache=false;
+  {% endcall %}
+{% endif %}
+
 -- Fact table containing all taxi trips enriched with zone information
+-- This is a classic star schema design: fact table (trips) joined to dimension table (zones)
+-- Materialized incrementally to handle large datasets efficiently
+
 select
     -- Trip identifiers
     trips.trip_id,
@@ -15,7 +28,7 @@ select
     trips.service_type,
     trips.rate_code_id,
 
-    -- Location details
+    -- Location details (enriched with human-readable zone names from dimension)
     trips.pickup_location_id,
     pz.borough as pickup_borough,
     pz.zone as pickup_zone,
@@ -53,5 +66,11 @@ left join {{ ref('dim_zones') }} as dz
     on trips.dropoff_location_id = dz.location_id
 
 {% if is_incremental() %}
+  -- En mode incrémental : seulement les nouvelles données
   where trips.pickup_datetime > (select max(pickup_datetime) from {{ this }})
+{% else %}
+  -- En FULL REFRESH : traiter par lots pour économiser la mémoire
+  -- Commencez avec une année, puis ajoutez les autres en mode incrémental
+  where trips.pickup_datetime >= '2020-01-01'
+    and trips.pickup_datetime < '2021-01-01'
 {% endif %}

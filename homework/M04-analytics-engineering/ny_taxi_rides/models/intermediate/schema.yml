@@ -50,7 +50,6 @@ models:
         description: Unique trip identifier (surrogate key)
       - name: vendor_id
         description: Taxi technology provider ID
-        description: Type of taxi service (Green or Yellow)
       - name: rate_code_id
         description: Rate code at end of trip
       - name: pickup_location_id
