@@ -1,4 +1,4 @@
-import requests
+import requests, os
 from pathlib import Path
 from google.cloud import bigquery
 from dotenv import load_dotenv
@@ -18,8 +18,8 @@ SCHEMA = [
     bigquery.SchemaField("dispatching_base_num",  "STRING"),
     bigquery.SchemaField("pickup_datetime",        "TIMESTAMP"),
     bigquery.SchemaField("dropOff_datetime",       "TIMESTAMP"),
-    bigquery.SchemaField("PUlocationID",           "FLOAT64"),
-    bigquery.SchemaField("DOlocationID",           "FLOAT64"),
+    bigquery.SchemaField("PUlocationID",           "int64"),
+    bigquery.SchemaField("DOlocationID",           "int64"),
     bigquery.SchemaField("SR_Flag",                "STRING"),
     bigquery.SchemaField("Affiliated_base_number", "STRING"),
 ]
