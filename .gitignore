@@ -38,3 +38,10 @@ homework/M03-data-warehouse/data
 taxi_rides_ny.duckdb
 ny_taxi_rides.duckdb
 homework/M04-analytics-engineering/ny_taxi_rides/ny_taxi_rides.duckdb
+
+.bruin.yml
+logs/runs
+logs/*.log
+__pycache__/
+*.py[cod]
+logs/queries
