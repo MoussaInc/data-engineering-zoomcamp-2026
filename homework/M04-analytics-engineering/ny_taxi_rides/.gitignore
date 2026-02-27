@@ -6,3 +6,4 @@ logs/
 # Data directory
 data/
 .env
+dbt_internal_packages/
