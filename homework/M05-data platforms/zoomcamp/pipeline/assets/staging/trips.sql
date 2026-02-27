@@ -1,4 +1,5 @@
-/* @bruin
+"""
+ @bruin
 name: staging.trips
 type: duckdb.sql
 
@@ -25,7 +26,7 @@ custom_checks:
       SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
       FROM staging.trips
     value: 1
-@bruin */
+"""
 
 SELECT
     t.pickup_datetime,

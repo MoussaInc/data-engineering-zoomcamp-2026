@@ -1,4 +1,5 @@
-/* @bruin
+"""
+@bruin
 name: reports.trips_report
 type: duckdb.sql
 
@@ -25,7 +26,7 @@ columns:
     type: bigint
     checks:
       - name: non_negative
-@bruin */
+"""
 
 SELECT
     CAST(pickup_datetime AS DATE) AS trip_date,

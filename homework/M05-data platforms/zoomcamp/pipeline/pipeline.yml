@@ -8,7 +8,7 @@ default_connections:
   duckdb: duckdb-default
 
 assets:
-  path: assets
+  - path: assets
   
 variables:
   taxi_types:

@@ -10,15 +10,15 @@ materialization:
   strategy: append
 """
 
-def materialize():
-    import os
-    import json
-    import pandas as pd
-    import requests
-    from io import BytesIO
-    from datetime import datetime, timedelta
-    from dateutil import parser
+import os
+import json
+import pandas as pd
+import requests
+from io import BytesIO
+from datetime import datetime, timedelta
+from dateutil import parser
 
+def materialize():
     start_date_str = os.environ.get("BRUIN_START_DATE")
     end_date_str = os.environ.get("BRUIN_END_DATE")
     vars_str = os.environ.get("BRUIN_VARS", "{}")
