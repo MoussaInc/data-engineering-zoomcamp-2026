@@ -34,6 +34,7 @@ serving_dir
 data/
 homework/M04-analytics-engineering/ny_taxi_rides/data
 homework/M03-data-warehouse/data
+homework/M07-batch/notebooks/data
 
 taxi_rides_ny.duckdb
 ny_taxi_rides.duckdb
