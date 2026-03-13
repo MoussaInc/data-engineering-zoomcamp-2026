@@ -28,6 +28,7 @@ serving_dir
 !week_6_stream_processing/avro_example/data/rides.csv
 *.parquet
 *.csv
+homework/.key_gcs
 
 # Data directory
 .*/data/
@@ -46,3 +47,6 @@ logs/*.log
 __pycache__/
 *.py[cod]
 logs/queries
+
+# GCP
+*.json
