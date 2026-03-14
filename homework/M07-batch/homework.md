@@ -74,10 +74,10 @@ What is the length of the longest trip in the dataset in hours?
 
 - 22.7
 - 58.2
-- 90.6
+- [x] 90.6
 - 134.5
 
-*SQL query :**
+*SQL query :*
 ```sql
 
 spark.sql("""
@@ -119,7 +119,7 @@ Using the zone lookup data and the Yellow November 2025 data, what is the name o
 
 If multiple answers are correct, select any
 
-*SQL query :**
+*SQL query :*
 ```sql
 
 spark.sql("""
