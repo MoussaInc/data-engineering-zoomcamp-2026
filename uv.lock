@@ -375,7 +375,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "dbt-duckdb" },
-    { name = "dlt" },
+    { name = "dlt", extra = ["duckdb"] },
     { name = "dotenv" },
     { name = "duckdb" },
     { name = "google-cloud-bigquery" },
@@ -396,7 +396,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "dbt-duckdb", specifier = ">=1.10.0" },
-    { name = "dlt", specifier = ">=1.22.0" },
+    { name = "dlt", extras = ["duckdb"], specifier = ">=1.22.0" },
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "duckdb", specifier = ">=1.4.4" },
     { name = "google-cloud-bigquery", specifier = ">=3.40.0" },
@@ -638,6 +638,11 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/4d/35/4822ed7afe2dcff8b97241fe3b2db6e9f85513c31c608efb80da0a161fe6/dlt-1.22.0.tar.gz", hash = "sha256:ce17c7df0a7d5efe50679568c0439f263d4ed2ad643e28fa60590122abbee76e", size = 929379, upload-time = "2026-02-17T13:21:47.407Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/47/9a/cf0b8b572e2f2c3c7c4ad7b8ed307b0045e36013f37be71abddf381d060a/dlt-1.22.0-py3-none-any.whl", hash = "sha256:2474726471d09e9eccff0f20a1821a2a48b60fb6cbff85f289ba7d3467232140", size = 1174024, upload-time = "2026-02-17T13:21:44.603Z" },
+]
+
+[package.optional-dependencies]
+duckdb = [
+    { name = "duckdb" },
 ]
 
 [[package]]
